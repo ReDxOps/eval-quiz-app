@@ -187,12 +187,12 @@ resource "azurerm_container_app" "frontend" {
 
       env {
         name  = "BACKEND_URL"
-        value = "https://${azurerm_container_app.backend.ingress[0].fqdn}"
+        value = "http://${var.aca_backend_name}"
       }
 
       env {
         name  = "BACKEND_HOST"
-        value = azurerm_container_app.backend.ingress[0].fqdn
+        value = var.aca_backend_name
       }
     }
   }
