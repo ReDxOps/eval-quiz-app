@@ -2,7 +2,6 @@ ARG NODE_VERSION=22.23.5-alpine3.24@sha256:1314fb30ec37592d5845e5a160d522c0e6809
 
 FROM node:${NODE_VERSION}
 
-ENV NODE_ENV=production
 ENV RESEND_API_KEY=re_dummy_api_key
 
 WORKDIR /app

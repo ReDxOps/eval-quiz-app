@@ -4,8 +4,6 @@ ARG NGINX_VERSION=1.31.8-alpine3.24-slim@sha256:b19233c62309c8e620732244f9d0d000
 # Build stage
 FROM node:${NODE_VERSION} AS builder
 
-ENV NODE_ENV=production
-
 WORKDIR /app
 
 COPY package*.json ./
