@@ -66,7 +66,7 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Deploy backend to Azure Container Apps
-        uses: azure/container-apps-deploy-action@8dff69dac3367c32ceb2690d8f13adbeab462703 v2
+        uses: azure/container-apps-deploy-action@8dff69dac3367c32ceb2690d8f13adbeab462703 #v2
         with:
           imageToDeploy: ${{ env.ACR_LOGIN_SERVER }}/eval-quiz-app-backend:${{ github.sha }}
           containerAppName: ca-eval-quiz-backend
