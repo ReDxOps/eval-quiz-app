@@ -133,3 +133,99 @@ variable "aca_max_replicas" {
   description = "Nombre maximum de réplicas"
   default     = 2
 }
+
+variable "log_analytics_sku" {
+  type        = string
+  description = "SKU du Log Analytics Workspace"
+  default     = "PerGB2018"
+}
+
+variable "log_analytics_retention_days" {
+  type        = number
+  description = "Durée de rétention des logs en jours"
+  default     = 30
+}
+
+variable "aca_logs_destination" {
+  type        = string
+  description = "Destination des logs de l'environnement Container Apps"
+  default     = "log-analytics"
+}
+
+variable "aca_revision_mode" {
+  type        = string
+  description = "Mode de révision des Container Apps (Single ou Multiple)"
+  default     = "Single"
+}
+
+variable "aca_backend_external_enabled" {
+  type        = bool
+  description = "Exposition externe de l'ingress backend"
+  default     = false
+}
+
+variable "aca_frontend_external_enabled" {
+  type        = bool
+  description = "Exposition externe de l'ingress frontend"
+  default     = true
+}
+
+variable "aca_ingress_transport" {
+  type        = string
+  description = "Protocole de transport de l'ingress (auto, http, http2, tcp)"
+  default     = "auto"
+}
+
+variable "aca_traffic_percentage" {
+  type        = number
+  description = "Pourcentage de trafic dirigé vers la dernière révision"
+  default     = 100
+}
+
+variable "aca_backend_container_name" {
+  type        = string
+  description = "Nom interne du conteneur backend"
+  default     = "backend"
+}
+
+variable "aca_frontend_container_name" {
+  type        = string
+  description = "Nom interne du conteneur frontend"
+  default     = "frontend"
+}
+
+variable "pg_server_name" {
+  type        = string
+  description = "Nom unique du serveur Azure PostgreSQL Flexible Server"
+  default     = "pg-eval-quiz-34323"
+}
+
+variable "pg_db_name" {
+  type        = string
+  description = "Nom de la base de données PostgreSQL"
+  default     = "quizdb"
+}
+
+variable "pg_admin_login" {
+  type        = string
+  description = "Nom d'utilisateur administrateur PostgreSQL"
+  default     = "pgadmin"
+}
+
+variable "pg_version" {
+  type        = string
+  description = "Version majeure de PostgreSQL"
+  default     = "16"
+}
+
+variable "pg_sku_name" {
+  type        = string
+  description = "SKU du serveur PostgreSQL Flexible Server"
+  default     = "B_Standard_B1ms"
+}
+
+variable "pg_storage_mb" {
+  type        = number
+  description = "Taille de stockage PostgreSQL en Mo"
+  default     = 32768
+}

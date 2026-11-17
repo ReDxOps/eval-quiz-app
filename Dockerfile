@@ -18,7 +18,10 @@ RUN npm run build
 FROM nginx/nginx-unprivileged:${NGINX_VERSION} AS serve
 
 COPY --from=builder /app/dist /usr/share/nginx/html
-COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx/nginx.conf /etc/nginx/templates/default.conf.template
+
+ENV BACKEND_URL=http://backend:3007 \
+    BACKEND_HOST=backend:3007
 
 EXPOSE 8080
 

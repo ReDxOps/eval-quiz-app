@@ -20,9 +20,22 @@ resource "azurerm_key_vault" "key_vault_projet_containers" {
 
     secret_permissions = [
       "Get",
+      "List",
+      "Set",
+      "Delete",
+      "Purge",
     ]
 
     storage_permissions = [
+      "Get",
+    ]
+  }
+
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = azurerm_user_assigned_identity.aca_identity.principal_id
+
+    secret_permissions = [
       "Get",
     ]
   }
