@@ -1,0 +1,15 @@
+Dockerfile*
+.gitignore
+*.md
+.env*
+*.log
+.git
+github
+node_modules
+.vscode
+dist
+backend
+terraform
+database
+script
+preuves
