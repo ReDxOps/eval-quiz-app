@@ -1,0 +1,37 @@
+---
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    name: CI (${{ matrix.component }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - component: frontend
+            context: .
+          - component: backend
+            context: ./backend
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
+
+      - name: Docker build ${{ matrix.component }} image
+        run: docker build ${{ matrix.context }} -t eval-quiz-app-${{ matrix.component }}:test
+
+      - name: Run Trivy vulnerability scanner on ${{ matrix.component }}
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 #v0.36.0
+        with:
+          image-ref: 'eval-quiz-app-${{ matrix.component }}:test'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH'
