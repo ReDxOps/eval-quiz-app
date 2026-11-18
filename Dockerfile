@@ -21,7 +21,8 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx/nginx.conf /etc/nginx/templates/default.conf.template
 
 ENV BACKEND_URL=http://backend:3007 \
-    BACKEND_HOST=backend:3007
+    BACKEND_HOST=backend:3007 \
+    NGINX_ENTRYPOINT_LOCAL_RESOLVERS=1
 
 EXPOSE 8080
 
