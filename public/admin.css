@@ -2,13 +2,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
 
-#login-form button {
-  width: 100%;
-  background: #ff0000;
+th {
+  background: #1d63ed;
   color: white;
-  padding: 12px;
-  font-size: 16px;
+  font-weight: 600;
 }
 
 body {
@@ -97,7 +96,7 @@ button {
 }
 
 .btn-primary {
-  background: #1059ea;
+  background: #1d63ed;
   color: white;
 }
 
@@ -126,6 +125,14 @@ button {
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+#login-form button {
+  width: 100%;
+  background: #1d63ed;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
 }
 
 /* Actions */
@@ -209,11 +216,6 @@ td {
   border-bottom: 1px solid #e2e8f0;
 }
 
-th {
-  background: #1d63ed;
-  color: white;
-  font-weight: 600;
-}
 
 tr:hover {
   background: #f8fafc;
