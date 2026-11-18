@@ -12,6 +12,11 @@ resource "azurerm_container_app_environment" "aca_env" {
   resource_group_name        = data.azurerm_resource_group.rg_projet_containers.name
   logs_destination           = var.aca_logs_destination
   log_analytics_workspace_id = azurerm_log_analytics_workspace.aca_logs.id
+
+  workload_profile {
+    name                  = "Consumption"
+    workload_profile_type = "Consumption"
+  }
 }
 
 data "azurerm_key_vault_secret" "jwt_secret" {
@@ -44,6 +49,7 @@ resource "azurerm_container_app" "backend" {
   container_app_environment_id = azurerm_container_app_environment.aca_env.id
   resource_group_name          = data.azurerm_resource_group.rg_projet_containers.name
   revision_mode                = var.aca_revision_mode
+  workload_profile_name        = "Consumption"
 
   identity {
     type         = "UserAssigned"
@@ -153,6 +159,7 @@ resource "azurerm_container_app" "frontend" {
   container_app_environment_id = azurerm_container_app_environment.aca_env.id
   resource_group_name          = data.azurerm_resource_group.rg_projet_containers.name
   revision_mode                = var.aca_revision_mode
+  workload_profile_name        = "Consumption"
 
   identity {
     type         = "UserAssigned"
@@ -187,12 +194,12 @@ resource "azurerm_container_app" "frontend" {
 
       env {
         name  = "BACKEND_URL"
-        value = "http://${var.aca_backend_name}"
+        value = "https://${azurerm_container_app.backend.ingress[0].fqdn}"
       }
 
       env {
         name  = "BACKEND_HOST"
-        value = var.aca_backend_name
+        value = azurerm_container_app.backend.ingress[0].fqdn
       }
     }
   }
