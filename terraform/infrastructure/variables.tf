@@ -161,7 +161,7 @@ variable "aca_revision_mode" {
 variable "aca_backend_external_enabled" {
   type        = bool
   description = "Exposition externe de l'ingress backend"
-  default     = false
+  default     = true
 }
 
 variable "aca_frontend_external_enabled" {
