@@ -2,6 +2,13 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
+#login-form button {
+  width: 100%;
+  background: #ff0000;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
 }
 
 body {
@@ -90,7 +97,7 @@ button {
 }
 
 .btn-primary {
-  background: #1d63ed;
+  background: #1059ea;
   color: white;
 }
 
@@ -119,14 +126,6 @@ button {
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-#login-form button {
-  width: 100%;
-  background: #1d63ed;
-  color: white;
-  padding: 12px;
-  font-size: 16px;
 }
 
 /* Actions */
